@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  db:
+    image: wnameless/oracle-xe-11g-r2
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+  liquibase:
+    image: liquibase-bug:0.0.1-SNAPSHOT
+    ports:
+      # For debugging
+      - "5005:5005"
+    environment:
+      - JAVA_OPTS=-Doracle.jdbc.timezoneAsRegion=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    depends_on:
+      - db

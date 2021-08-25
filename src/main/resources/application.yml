@@ -1,0 +1,10 @@
+spring:
+  liquibase:
+    change-log: 'classpath:db/changelog/changelog.xml'
+  datasource:
+    url: 'jdbc:oracle:thin:@db:1521:xe'
+    username: 'system'
+    password: 'oracle'
+logging:
+  level.org.springframework.core.io.support: trace
+  level.liquibase: info
